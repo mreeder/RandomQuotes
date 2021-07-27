@@ -1,0 +1,11 @@
+FROM mcr.microsoft.com/dotnet/sdk:5.0
+
+RUN mkdir /src
+WORKDIR /src
+ADD . /src
+RUN dotnet restore
+RUN ["dotnet", "build", "--configuration", "release"]
+
+ENTRYPOINT [ "dotnet", "run", "--no-launch-profile" ]
+CMD ["--connectionString=\"\""]
+
