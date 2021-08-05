@@ -177,21 +177,6 @@ steps "Deploy Database Changes" {
     }
 }
 
-steps "Determine Rolling Deploy Window Size" {
-
-    actions "Determine Rolling Deploy Window Size" {
-        properties = {
-            DRDWSPerformRollingDeploy = "True"
-            DRDWSServerPercentageToDeploy = "50"
-            DRDWSServerRole = "web"
-            Octopus.Action.Template.Id = "ActionTemplates-44"
-            Octopus.Action.Template.Version = "2"
-        }
-
-        worker_pool_id_or_name = "Default Worker Pool"
-    }
-}
-
 steps "Deploy to IIS" {
     properties = {
         Octopus.Action.MaxParallelism = "#{DeploymentWindowSize}"
