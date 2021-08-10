@@ -1,6 +1,6 @@
-steps "Run a Script" {
+steps "Temp create artifact" {
 
-    actions "Run a Script" {
+    actions "Temp create artifact" {
         action_type = "Octopus.Script"
         properties = {
             Octopus.Action.RunOnServer = "true"
@@ -194,6 +194,7 @@ steps "Deploy to IIS" {
                 
                 $directory = (Get-Website -Name 'RandomQuotes').physicalPath
                 if( $directory ){
+                	Write-Output "Taking site offline."
                     Copy-Item "C:\app_offline.htm" (Join-Path $directory 'app_offline.htm') -Force
                 }
             EOT
