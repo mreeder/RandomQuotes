@@ -47,6 +47,7 @@ step "Deploy Database Changes" {
 
 step "Deploy to IIS" {
     properties = {
+        Octopus.Action.MaxParallelism = "1"
         Octopus.Action.TargetRoles = "web"
     }
 
